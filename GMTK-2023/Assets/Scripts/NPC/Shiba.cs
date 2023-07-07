@@ -15,6 +15,7 @@ public class Shiba : NPC
     // Update is called once per frame
     void Update()
     {
+        base.Update();
         if(Input.GetKeyDown(KeyCode.Tab))
         {
             AddSuspicion(.5f);

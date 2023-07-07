@@ -17,9 +17,10 @@ public class NPC : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
-        
+        AddSuspicion(-.00051f);
+        Mathf.Clamp(GetSuspicion(), 0, 1);
     }
 
     public void AddSuspicion(float sus)
