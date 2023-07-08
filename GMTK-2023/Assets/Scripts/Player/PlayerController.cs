@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public float sensitivity;
     public float lookX, lookY;
     public int heldCard = 0;
+
+    [SerializeField] Text card_text;
 
     public static PlayerController instance;
 
@@ -36,10 +39,12 @@ public class PlayerController : MonoBehaviour
     public void pickupCard(int card)
     {
         heldCard = card;
+        card_text.text = heldCard.ToString();
     }
 
     public void putDownCard()
     {
         heldCard = 0;
+        card_text.text = "0";
     }
 }
