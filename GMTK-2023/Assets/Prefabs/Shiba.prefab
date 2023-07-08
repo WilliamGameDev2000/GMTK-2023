@@ -611,6 +611,7 @@ GameObject:
   - component: {fileID: 7245494073879947568}
   - component: {fileID: 2507527153091181372}
   - component: {fileID: 5898304055813651571}
+  - component: {fileID: 4800406436585946386}
   m_Layer: 0
   m_Name: Shiba
   m_TagString: Untagged
@@ -699,6 +700,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: f34376f85d27be04794d7097eb301e18, type: 2}
   ViewCone: {fileID: 7636111379954425740}
+--- !u!114 &4800406436585946386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5974596718438998348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7348a99b91b79b498f5cd060653ef3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6592353217726197547
 GameObject:
   m_ObjectHideFlags: 0
