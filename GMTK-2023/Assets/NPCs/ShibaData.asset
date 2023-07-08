@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 5974596718438998348, guid: bdb3c93e117658447a40065e2e65e03e, type: 3}
   sus_level: 0
   trust_level: 0.35
-  sus_gain_rate: 0.00031
+  sus_gain_rate: 0.00041
   trust_gain_rate: 0.0009
-  sus_lose_rate: 0.00025
+  sus_lose_rate: 0.0002
   trust_lose_rate: 0.00012

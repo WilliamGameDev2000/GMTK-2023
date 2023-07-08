@@ -10,8 +10,7 @@ public class NPC : MonoBehaviour
     [SerializeField] GameObject ViewCone;
 
     float Current_suspicion;
-    
-    [SerializeField] float Current_trust;
+    float Current_trust;
     // Start is called before the first frame update
     protected void Start()
     {
