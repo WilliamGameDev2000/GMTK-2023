@@ -12,11 +12,14 @@ public class AIGameManager : MonoBehaviour
     public int playersLeft = 5;
     public int mustDraw = -1, drawAmount = 0;
     public GameObject[] playerModels = new GameObject[5];
+    public GameObject turnIndicator;
+    public Material targetMat;
 
     // Start is called before the first frame update
     void Start()
     {
         targetPlayer = Random.Range(0, 5);
+        playerModels[targetPlayer].GetComponent<MeshRenderer>().material = targetMat;
         if (instance == null) {
             instance = this;
         }else{
@@ -133,6 +136,8 @@ public class AIGameManager : MonoBehaviour
                 turn = 0;
             }
         } while (hands[turn, 0] == 0);//skip turn of eliminated players
+
+        turnIndicator.transform.position = new Vector3(0, 1, 0) + playerModels[turn].transform.position;
     }
 
     public bool drewElimination(int p)
