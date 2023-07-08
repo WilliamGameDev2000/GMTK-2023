@@ -12,7 +12,10 @@ public class MainDeck : MonoBehaviour
 
     void OnMouseDown()
     {
-        AIGameManager.instance.cardDealt(drawCard());
+        if (AIGameManager.instance.playersLeft > 1)
+        {
+            AIGameManager.instance.cardDealt(drawCard());
+        }
     }
 
     void OnMouseEnter()
