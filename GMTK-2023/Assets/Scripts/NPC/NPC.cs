@@ -23,10 +23,10 @@ public class NPC : MonoBehaviour
     {
         if(ViewCone.GetComponent<FieldOfView>().visibleTargets.Count != 0)
         {
-            AddSuspicion(.00025f);
+            AddSuspicion(data.sus_gain_rate);
         }
 
-        AddSuspicion(-.000125f);
+        AddSuspicion(-data.sus_lose_rate);
     }
 
     public void AddSuspicion(float sus)

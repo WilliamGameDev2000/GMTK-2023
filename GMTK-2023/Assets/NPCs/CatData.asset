@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba1110af5ac32374ebad6ec8ce6de231, type: 3}
-  m_Name: ShibaData
+  m_Name: CatData
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5974596718438998348, guid: bdb3c93e117658447a40065e2e65e03e, type: 3}
+  prefab: {fileID: 0}
   sus_level: 0
   trust_level: 0
-  sus_gain_rate: 0.00025
-  trust_gain_rate: 0.0009
-  sus_lose_rate: 0.00015
+  sus_gain_rate: 0
+  trust_gain_rate: 0
+  sus_lose_rate: 0
   trust_lose_rate: 0
