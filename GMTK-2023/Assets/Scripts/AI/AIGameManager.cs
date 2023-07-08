@@ -37,7 +37,8 @@ public class AIGameManager : MonoBehaviour
 
     public void cardDealt(int cardDrawn)
     {
-        if(mustDraw >= 0)
+        Debug.Log(cardDrawn);
+        if (mustDraw >= 0)
         {
             if (cardDrawn == 4)
             {
@@ -48,7 +49,7 @@ public class AIGameManager : MonoBehaviour
                     return;
                 }
             }
-            else 
+            else
             {
                 int j = 0;
                 while (hands[mustDraw, j] != 0)
@@ -58,7 +59,7 @@ public class AIGameManager : MonoBehaviour
                 hands[mustDraw, j] = cardDrawn;
             }
 
-            if(--drawAmount == 0)
+            if (--drawAmount == 0)
             {
                 mustDraw = -1;
             }
@@ -85,39 +86,46 @@ public class AIGameManager : MonoBehaviour
             hands[turn, i++] = cardDrawn;
         }
 
-        for(int j = 0; j < 3; j++)
+        for (int j = 0; j < 3; j++)
         {
             int r = Random.Range(0, i);
             if (hands[turn, r] != 3)
             {
                 if (hands[turn, r] == 1)
                 {
+                    Debug.Log("Played 1 on");
                     mustDraw = randPlayer(turn);
+                    Debug.Log(mustDraw);
                     drawAmount = 2;
                     break;
                 }
                 else if (hands[turn, r] == 2)
                 {
+                    Debug.Log("Played 2 on");
                     int targeted = randPlayer(turn);
+                    Debug.Log(targeted);
                     int k = 0;
-                    while(k != 0)
+                    while (k != 0)
                     {
                         ++k;
                     }
                     k = Random.Range(0, k);
                     hands[turn, r] = hands[targeted, k];
+                    Debug.Log(hands[turn, r]);
                     shift(targeted, k);
                     break;
                 }
             }
         }
 
-
-        ++turn;
-        if(turn >= numPlayers)
+        do
         {
-            turn = 0;
-        }
+            ++turn;
+            if (turn >= numPlayers)
+            {
+                turn = 0;
+            }
+        } while (hands[turn, 0] == 0);//skip turn of eliminated players
     }
 
     public bool drewElimination(int p)
@@ -128,6 +136,7 @@ public class AIGameManager : MonoBehaviour
             if (hands[p, i] == 3)
             {
                 shift(p, i);
+                Debug.Log("defended");
                 return false;
             }
             i++;
@@ -137,6 +146,7 @@ public class AIGameManager : MonoBehaviour
         {
             hands[p, k] = 0;
         }
+        Debug.Log("eliminated " + p);
         --playersLeft;
         if (p == targetPlayer)
         {
