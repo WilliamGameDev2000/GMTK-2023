@@ -11,6 +11,7 @@ public class AIGameManager : MonoBehaviour
     public int targetPlayer;
     public int playersLeft = 5;
     public int mustDraw = -1, drawAmount = 0;
+    public GameObject[] playerModels = new GameObject[5];
 
     // Start is called before the first frame update
     void Start()
@@ -142,17 +143,18 @@ public class AIGameManager : MonoBehaviour
             if (hands[p, i] == 3)
             {
                 shift(p, i);
-                Debug.Log("defended");
+                //Debug.Log("defended");
                 return false;
             }
             i++;
         }
 
+        playerModels[p].SetActive(false);
         for (int k = 0; k < i; k++)
         {
             hands[p, k] = 0;
         }
-        Debug.Log("eliminated " + p);
+        //Debug.Log("eliminated " + p);
         --playersLeft;
         if (p == targetPlayer)
         {
@@ -160,7 +162,7 @@ public class AIGameManager : MonoBehaviour
         }
         else if(playersLeft == 1)
         {
-            //win the game
+            // win the game
         }
         return true;
     }
