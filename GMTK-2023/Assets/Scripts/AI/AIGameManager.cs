@@ -20,6 +20,8 @@ public class AIGameManager : MonoBehaviour
     {
         targetPlayer = Random.Range(0, 5);
         playerModels[targetPlayer].GetComponent<MeshRenderer>().material = targetMat;
+        turnIndicator.transform.position = new Vector3(0, 2, 0) + playerModels[turn].transform.position;
+
         if (instance == null) {
             instance = this;
         }else{
@@ -147,7 +149,7 @@ public class AIGameManager : MonoBehaviour
             {
                 turn = 0;
             }
-        } while (hands[turn, 0] == 0);//skip turn of eliminated players
+        } while (hands[turn, 0] == -1);//skip turn of eliminated players
 
         if (mustDraw == -1)
         {
@@ -172,7 +174,7 @@ public class AIGameManager : MonoBehaviour
         playerModels[p].SetActive(false);
         for (int k = 0; k < i; k++)
         {
-            hands[p, k] = 0;
+            hands[p, k] = -1;
         }
         //Debug.Log("eliminated " + p);
         --playersLeft;
@@ -200,7 +202,7 @@ public class AIGameManager : MonoBehaviour
         int playersFound = 0;
         for (int k = 0; k < numPlayers; k++)
         {
-            if (k != exclude && hands[k, 0] != 0)
+            if (k != exclude && hands[k, 0] != -1)
             {
                 if (Random.Range(0, playersLeft - 1 - playersFound++) == 0)
                 {
