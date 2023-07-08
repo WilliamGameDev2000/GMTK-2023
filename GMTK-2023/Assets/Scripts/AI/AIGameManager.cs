@@ -72,6 +72,7 @@ public class AIGameManager : MonoBehaviour
         {
             if (drewElimination(turn))
             {
+                nextTurn();
                 return;
             }
         }
@@ -118,6 +119,11 @@ public class AIGameManager : MonoBehaviour
             }
         }
 
+        nextTurn();
+    }
+
+    public void nextTurn()
+    {
         do
         {
             ++turn;
