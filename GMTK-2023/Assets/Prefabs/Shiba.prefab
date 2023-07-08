@@ -713,6 +713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: f34376f85d27be04794d7097eb301e18, type: 2}
+  ViewCone: {fileID: 7636111379954425740}
 --- !u!1 &6592353217726197547
 GameObject:
   m_ObjectHideFlags: 0
