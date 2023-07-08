@@ -25,9 +25,14 @@ public class CardSlot : MonoBehaviour
     {
         if (PlayerController.instance.heldCard != 0)
         {
-            for (int i = MainDeck.instance.deckPos; i >= MainDeck.instance.deckPos - num; i--)
+            for (int i = MainDeck.instance.deckPos; i >= MainDeck.instance.deckPos - num && i >= 0; i--)
             {
                 MainDeck.instance.cards[i + 1] = MainDeck.instance.cards[i];
+            }
+            if(MainDeck.instance.deckPos - num < 0)
+            {
+                ++MainDeck.instance.deckPos;
+                MainDeck.instance.cards[0] = PlayerController.instance.heldCard;
             }
             MainDeck.instance.cards[MainDeck.instance.deckPos++ - num] = PlayerController.instance.heldCard;
             PlayerController.instance.putDownCard();

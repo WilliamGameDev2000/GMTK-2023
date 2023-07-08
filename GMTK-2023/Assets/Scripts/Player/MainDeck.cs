@@ -10,6 +10,11 @@ public class MainDeck : MonoBehaviour
     public float lastLookAt;
     public static MainDeck instance;
 
+    void OnMouseDown()
+    {
+        AIGameManager.instance.cardDealt(drawCard());
+    }
+
     void OnMouseEnter()
     {
         for (int i = 0; i < cardSlots.Length; i++)
@@ -62,6 +67,23 @@ public class MainDeck : MonoBehaviour
             {
                 cardSlots[i].SetActive(false);
             }
+        }
+    }
+
+    public int drawCard()
+    {
+        if (deckPos >= 0)
+        {
+            int c = cards[deckPos];
+            cards[deckPos--] = 0;
+            return c;
+        }
+        else
+        {
+            // suspicion rises incredibly fast until you lose the game because there are enough elimination cards that
+            // you cannot reach the bottom of the deck without everyone else being eliminated meaning for the bottom
+            // of the deck to have been reached the game has been tampered with
+            return 0;
         }
     }
 }
