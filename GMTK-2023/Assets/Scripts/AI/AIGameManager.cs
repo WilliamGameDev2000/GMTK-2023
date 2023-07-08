@@ -13,7 +13,7 @@ public class AIGameManager : MonoBehaviour
     public int mustDraw = -1, drawAmount = 0;
     public GameObject[] playerModels = new GameObject[5];
     public GameObject turnIndicator;
-    public Material targetMat;
+    public Material targetMat, mustDrawMat;
 
     // Start is called before the first frame update
     void Start()
@@ -41,15 +41,23 @@ public class AIGameManager : MonoBehaviour
 
     public void cardDealt(int cardDrawn)
     {
-        Debug.Log(cardDrawn);
+        //Debug.Log(cardDrawn);
         if (mustDraw >= 0)
         {
             if (cardDrawn == 4)
             {
                 if (drewElimination(mustDraw))
                 {
+                    if (turn == mustDraw)
+                    {
+                        nextTurn();
+                    }
+
                     mustDraw = -1;
                     drawAmount = 0;
+
+                    turnIndicator.transform.position = new Vector3(0, 2, 0) + playerModels[turn].transform.position;
+                    turnIndicator.GetComponent<MeshRenderer>().material = targetMat;
                     return;
                 }
             }
@@ -66,6 +74,8 @@ public class AIGameManager : MonoBehaviour
             if (--drawAmount == 0)
             {
                 mustDraw = -1;
+                turnIndicator.transform.position = new Vector3(0, 2, 0) + playerModels[turn].transform.position;
+                turnIndicator.GetComponent<MeshRenderer>().material = targetMat;
             }
             return;
         }
@@ -98,17 +108,19 @@ public class AIGameManager : MonoBehaviour
             {
                 if (hands[turn, r] == 1)
                 {
-                    Debug.Log("Played 1 on");
+                    //Debug.Log("Played 1 on");
                     mustDraw = randPlayer(turn);
-                    Debug.Log(mustDraw);
+                    //Debug.Log(mustDraw);
                     drawAmount = 2;
+                    turnIndicator.GetComponent<MeshRenderer>().material = mustDrawMat;
+                    turnIndicator.transform.position = new Vector3(0, 2, 0) + playerModels[mustDraw].transform.position;
                     break;
                 }
                 else if (hands[turn, r] == 2)
                 {
-                    Debug.Log("Played 2 on");
+                    //Debug.Log("Played 2 on");
                     int targeted = randPlayer(turn);
-                    Debug.Log(targeted);
+                    //Debug.Log(targeted);
                     int k = 0;
                     while (k != 0)
                     {
@@ -116,7 +128,7 @@ public class AIGameManager : MonoBehaviour
                     }
                     k = Random.Range(0, k);
                     hands[turn, r] = hands[targeted, k];
-                    Debug.Log(hands[turn, r]);
+                    //Debug.Log(hands[turn, r]);
                     shift(targeted, k);
                     break;
                 }
@@ -137,7 +149,10 @@ public class AIGameManager : MonoBehaviour
             }
         } while (hands[turn, 0] == 0);//skip turn of eliminated players
 
-        turnIndicator.transform.position = new Vector3(0, 1, 0) + playerModels[turn].transform.position;
+        if (mustDraw == -1)
+        {
+            turnIndicator.transform.position = new Vector3(0, 2, 0) + playerModels[turn].transform.position;
+        }
     }
 
     public bool drewElimination(int p)

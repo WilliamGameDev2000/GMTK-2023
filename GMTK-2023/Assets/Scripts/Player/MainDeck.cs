@@ -64,7 +64,7 @@ public class MainDeck : MonoBehaviour
 
     void Update()
     {
-        if (cardSlots[0].activeInHierarchy && lastLookAt + 3 < Time.time)
+        if (cardSlots[0].activeInHierarchy && lastLookAt + 1 < Time.time)
         {
             for (int i = 0; i < cardSlots.Length; i++)
             {
