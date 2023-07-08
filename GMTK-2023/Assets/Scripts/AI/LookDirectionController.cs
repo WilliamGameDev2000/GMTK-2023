@@ -5,9 +5,12 @@ using UnityEngine;
 public class LookDirectionController : MonoBehaviour
 {
 
-    bool is_looking;
+    bool is_looking = true;
 
     float initial_forwardY;
+
+    [SerializeField]
+    NPC npc;
 
     private void Start()
     {
@@ -21,37 +24,45 @@ public class LookDirectionController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(period);
-            if(Random.value >= 0.5)
+            if(Random.value <= npc.GetSuspicion())
             {
-                if (!is_looking)
+                if (is_looking)
                 {
-                    if (Random.value >= 0.5)
-                    {
-                        transform.LeanRotateAround(new Vector3(0, transform.position.y, 0), 150, .3f);
-                    }
-                    else
-                    {
-                        transform.LeanRotateAround(new Vector3(0, transform.position.y, 0), -150, .3f);
-                    }
-                    is_looking = true;
+                    LookAway();
                 }
             }
             else
             {
-                if (is_looking)
+                if (!is_looking)
                 {
-                    transform.LeanRotateY(initial_forwardY, 0.3f);
-                    //transform.LeanRotateAround(new Vector3(0, transform.position.y, 0), -150, .3f);
-                    is_looking = false;
-
+                    LookBack();
                 }
             }
         }
     }
 
-    // Update is called once per frame
+    public void LookBack()
+    {
+        transform.LeanRotateY(initial_forwardY, 0.3f);
+        is_looking = true;
+    }
+
+    public void LookAway()
+    {
+        if (Random.value >= 0.5)
+        {
+            transform.LeanRotateAround(new Vector3(0, transform.position.y, 0), 150, .3f);
+        }
+        else
+        {
+            transform.LeanRotateAround(new Vector3(0, transform.position.y, 0), -150, .3f);
+        }
+        is_looking = false;
+    }
+
+  /*  // Update is called once per frame
     void Update()
     {
        
-    }
+    }*/
 }

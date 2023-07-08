@@ -32,7 +32,7 @@ public class NPC : MonoBehaviour
     public void AddSuspicion(float sus)
     {
         Current_suspicion += sus;
-        Current_suspicion = Mathf.Clamp(Current_suspicion, 0, 1);
+        Current_suspicion = Mathf.Clamp(Current_suspicion, 0, 1.2f);
     }
     public void AddTrust(float trust)
     {
