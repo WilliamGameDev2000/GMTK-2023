@@ -6,11 +6,8 @@ using UnityEngine.UI;
 public class MeterFill : MonoBehaviour
 {
 
-    enum MeterType { sus, trust}
-
-    [SerializeField] MeterType meter_type;
-
-    [SerializeField] Slider meter;
+    [SerializeField] Slider SusMeter;
+    [SerializeField] Slider TrustMeter;
 
     [SerializeField] Shiba owner;
 
@@ -25,15 +22,10 @@ public class MeterFill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (meter_type)
-        {
-            case MeterType.sus:
-                meter.value = owner.GetSuspicion();
-                break;
-            case MeterType.trust:
-                meter.value = owner.GetTrust();
-                break;
-        }
+        SusMeter.value = owner.GetSuspicion();
+        
+        TrustMeter.value = owner.GetTrust();
+        
         
     }
 }

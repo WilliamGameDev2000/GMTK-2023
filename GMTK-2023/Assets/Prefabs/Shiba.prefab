@@ -85,7 +85,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1416396555953674788}
   - component: {fileID: 1416396555953674791}
-  - component: {fileID: 850737543190152534}
   m_Layer: 5
   m_Name: SusSlider
   m_TagString: Untagged
@@ -165,21 +164,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &850737543190152534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416396555953674789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 623fac16f0b6a944bbcfbf0c067f0a00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meter_type: 0
-  meter: {fileID: 1416396555953674791}
-  owner: {fileID: 5898304055813651571}
 --- !u!1 &1416396556329867935
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +176,7 @@ GameObject:
   - component: {fileID: 1416396556329867923}
   - component: {fileID: 1416396556329867920}
   - component: {fileID: 1416396556329867921}
+  - component: {fileID: 4313698287898945656}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -281,6 +266,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4313698287898945656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416396556329867935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 623fac16f0b6a944bbcfbf0c067f0a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SusMeter: {fileID: 1416396555953674791}
+  TrustMeter: {fileID: 1416396556606622632}
+  owner: {fileID: 5898304055813651571}
 --- !u!1 &1416396556350210311
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,7 +402,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1416396556606622633}
   - component: {fileID: 1416396556606622632}
-  - component: {fileID: 798354177595555004}
   m_Layer: 5
   m_Name: TrsustSlider
   m_TagString: Untagged
@@ -481,21 +480,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &798354177595555004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416396556606622646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 623fac16f0b6a944bbcfbf0c067f0a00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meter_type: 1
-  meter: {fileID: 1416396556606622632}
-  owner: {fileID: 5898304055813651571}
 --- !u!1 &1416396556662381229
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,6 +698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: f34376f85d27be04794d7097eb301e18, type: 2}
   ViewCone: {fileID: 7636111379954425740}
+  Current_trust: 0
 --- !u!1 &6592353217726197547
 GameObject:
   m_ObjectHideFlags: 0

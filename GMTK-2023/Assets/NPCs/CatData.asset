@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: CatData
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  sus_level: 0
-  trust_level: 0
-  sus_gain_rate: 0
-  trust_gain_rate: 0
-  sus_lose_rate: 0
-  trust_lose_rate: 0
+  sus_level: 0.267
+  trust_level: 0.01
+  sus_gain_rate: 0.0006
+  trust_gain_rate: 0.000045
+  sus_lose_rate: 0.000012
+  trust_lose_rate: 0.0002
