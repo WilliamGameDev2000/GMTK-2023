@@ -6504,6 +6504,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1779344440}
     m_Modifications:
+    - target: {fileID: 508940180841675175, guid: 1c5afdd6ef63bf6489f60ac10aea3572, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 508940180841675175, guid: 1c5afdd6ef63bf6489f60ac10aea3572, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 632727482705786048, guid: 1c5afdd6ef63bf6489f60ac10aea3572, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 632727482705786048, guid: 1c5afdd6ef63bf6489f60ac10aea3572, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613252075385246721, guid: 1c5afdd6ef63bf6489f60ac10aea3572, type: 3}
+      propertyPath: angle
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613252075385246721, guid: 1c5afdd6ef63bf6489f60ac10aea3572, type: 3}
+      propertyPath: targetMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 3053227952853185066, guid: 1c5afdd6ef63bf6489f60ac10aea3572, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.000008867745
@@ -6558,7 +6582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7756123576899667058, guid: 1c5afdd6ef63bf6489f60ac10aea3572, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.254978
+      value: 6.284
       objectReference: {fileID: 0}
     - target: {fileID: 7756123576899667058, guid: 1c5afdd6ef63bf6489f60ac10aea3572, type: 3}
       propertyPath: m_LocalPosition.z

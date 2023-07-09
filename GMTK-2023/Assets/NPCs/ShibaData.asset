@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1110af5ac32374ebad6ec8ce6de231, type: 3}
   m_Name: ShibaData
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5974596718438998348, guid: bdb3c93e117658447a40065e2e65e03e, type: 3}
+  prefab: {fileID: 6983000410421419720, guid: 1c5afdd6ef63bf6489f60ac10aea3572, type: 3}
   sus_level: 0
   trust_level: 0.35
   sus_gain_rate: 0.00041
