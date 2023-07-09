@@ -22,7 +22,7 @@ public class AIGameManager : MonoBehaviour
     {
         targetPlayer = Random.Range(0, 5);
         playerModels[targetPlayer].GetComponent<MeshRenderer>().material = targetMat;
-        turnIndicator.transform.position = new Vector3(0, 2, 0) + playerModels[turn].transform.position;
+        turnIndicator.transform.position = new Vector3(0, .85f, 0) + playerModels[turn].transform.position;
 
         if (instance == null) {
             instance = this;
@@ -69,7 +69,7 @@ public class AIGameManager : MonoBehaviour
                     mustDraw = -1;
                     drawAmount = 0;
 
-                    turnIndicator.transform.position = new Vector3(0, 2, 0) + playerModels[turn].transform.position;
+                    turnIndicator.transform.position = new Vector3(0, .85f, 0) + playerModels[turn].transform.position;
                     turnIndicator.GetComponent<MeshRenderer>().material = targetMat;
                     return;
                 }
@@ -87,7 +87,7 @@ public class AIGameManager : MonoBehaviour
             if (--drawAmount == 0)
             {
                 mustDraw = -1;
-                turnIndicator.transform.position = new Vector3(0, 2, 0) + playerModels[turn].transform.position;
+                turnIndicator.transform.position = new Vector3(0, .85f, 0) + playerModels[turn].transform.position;
                 turnIndicator.GetComponent<MeshRenderer>().material = targetMat;
             }
             return;
@@ -141,7 +141,7 @@ public class AIGameManager : MonoBehaviour
                     Debug.Log(mustDraw);
                     drawAmount = 2;
                     turnIndicator.GetComponent<MeshRenderer>().material = mustDrawMat;
-                    turnIndicator.transform.position = new Vector3(0, 2, 0) + playerModels[mustDraw].transform.position;
+                    turnIndicator.transform.position = new Vector3(0, .85f, 0) + playerModels[mustDraw].transform.position;
                     break;
                 }
                 else if (hands[turn, r] == 2)
@@ -181,7 +181,7 @@ public class AIGameManager : MonoBehaviour
 
         if (mustDraw == -1)
         {
-            turnIndicator.transform.position = new Vector3(0, 2, 0) + playerModels[turn].transform.position;
+            turnIndicator.transform.position = new Vector3(0, .85f, 0) + playerModels[turn].transform.position;
         }
     }
 
