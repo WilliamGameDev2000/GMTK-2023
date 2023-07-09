@@ -23,16 +23,20 @@ public class MainDeck : MonoBehaviour
 
     void OnMouseEnter()
     {
-        transform.localScale = new Vector3(0.18f, 0.07f, 0.13f);
-        for (int i = 0; i < cardSlots.Length; i++)
+        transform.localScale = new Vector3(0.18f, 0.13f, 0.13f);
+
+        if (PlayerController.instance.heldCard != 0)
         {
-            cardSlots[i].SetActive(true);
+            for (int i = 0; i < cardSlots.Length; i++)
+            {
+                cardSlots[i].SetActive(true);
+            }
         }
     }
 
     void OnMouseExit()
     {
-        transform.localScale = new Vector3(0.15f, 0.05f, 0.1f);
+        transform.localScale = new Vector3(0.15f, 0.1f, 0.1f);
     }
 
     void OnMouseOver()
