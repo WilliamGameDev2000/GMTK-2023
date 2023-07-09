@@ -14,6 +14,8 @@ public class AIGameManager : MonoBehaviour
     public GameObject[] playerModels = new GameObject[5];
     public GameObject turnIndicator;
     public Material targetMat, mustDrawMat;
+    public float playCard;
+    public bool progress = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +40,15 @@ public class AIGameManager : MonoBehaviour
                 hands[i, j] = 2;
             }
             hands[i, 4] = 3;
+        }
+    }
+
+    void Update()
+    {
+        if (progress && playCard + 5 < Time.time)
+        {
+            progress = false;
+            play();
         }
     }
 
@@ -68,7 +79,7 @@ public class AIGameManager : MonoBehaviour
                 int j = 0;
                 while (hands[mustDraw, j] != 0)
                 {
-                    j++;
+                    ++j;
                 }
                 hands[mustDraw, j] = cardDrawn;
             }
@@ -103,7 +114,22 @@ public class AIGameManager : MonoBehaviour
             hands[turn, i++] = cardDrawn;
         }
 
-        for (int j = 0; j < 3; j++)
+
+        //Debug.Log("Mark Time");
+        playCard = Time.time;
+        progress = true;
+    }
+
+    public void play()
+    {
+        //Debug.Log("Play");
+        int i = 0;
+        while (hands[turn, i] != 0)
+        {
+            ++i;
+        }
+
+        for (int j = 0; j < 10; j++)
         {
             int r = Random.Range(0, i);
             if (hands[turn, r] != 3)
@@ -112,7 +138,7 @@ public class AIGameManager : MonoBehaviour
                 {
                     //Debug.Log("Played 1 on");
                     mustDraw = randPlayer(turn);
-                    //Debug.Log(mustDraw);
+                    Debug.Log(mustDraw);
                     drawAmount = 2;
                     turnIndicator.GetComponent<MeshRenderer>().material = mustDrawMat;
                     turnIndicator.transform.position = new Vector3(0, 2, 0) + playerModels[mustDraw].transform.position;

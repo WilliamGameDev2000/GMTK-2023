@@ -4783,6 +4783,8 @@ MonoBehaviour:
   turnIndicator: {fileID: 179472924}
   targetMat: {fileID: 2100000, guid: e2db094208b4ffa46bec1e3a4944b432, type: 2}
   mustDrawMat: {fileID: 2100000, guid: 39603f9e72aec534b92f074e84a7d1f8, type: 2}
+  playCard: 0
+  progress: 0
 --- !u!4 &1779344440
 Transform:
   m_ObjectHideFlags: 0
