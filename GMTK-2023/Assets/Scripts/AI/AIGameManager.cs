@@ -15,14 +15,20 @@ public class AIGameManager : MonoBehaviour
     public GameObject turnIndicator;
     public Material targetMat, mustDrawMat;
     public float playCard;
-    public bool progress = false;
+    public int progress = 0;
+    public Material draw2Mat, stealMat, defenseMat, turnMat;
+    public int indicatedPlayer;
+    public bool acceptingCards = true;
+    public Vector3[] above = new Vector3[5];
+    public AudioClip[] playSound = new AudioClip[4];
 
     // Start is called before the first frame update
     void Start()
     {
         targetPlayer = Random.Range(0, 5);
         playerModels[targetPlayer].GetComponent<MeshRenderer>().material = targetMat;
-        turnIndicator.transform.position = new Vector3(0, .85f, 0) + playerModels[turn].transform.position;
+        turnIndicator.transform.position = above[turn];
+        indicatedPlayer = turn;
 
         if (instance == null) {
             instance = this;
@@ -45,9 +51,9 @@ public class AIGameManager : MonoBehaviour
 
     void Update()
     {
-        if (progress && playCard + 5 < Time.time)
+        if (progress == 1 && playCard + 2 < Time.time)
         {
-            progress = false;
+            progress = 2;
             play();
         }
 
@@ -59,11 +65,17 @@ public class AIGameManager : MonoBehaviour
                 GameManager.instance.SetEndState(GameManager.EndState.LOSE);
             }
         }
+    
+        if(progress == 2 && playCard + 4 < Time.time)
+        {
+            progress = 0;
+            nextTurn();
+            acceptingCards = true;
+        }
     }
 
     public void cardDealt(int cardDrawn)
     {
-        //Debug.Log(cardDrawn);
         if (mustDraw >= 0)
         {
             if (cardDrawn == 4)
@@ -78,10 +90,15 @@ public class AIGameManager : MonoBehaviour
                     mustDraw = -1;
                     drawAmount = 0;
 
-                    turnIndicator.transform.position = new Vector3(0, .85f, 0) + playerModels[turn].transform.position;
-                    turnIndicator.GetComponent<MeshRenderer>().material = targetMat;
+                    turnIndicator.transform.position = above[turn];
+                    turnIndicator.GetComponent<MeshRenderer>().material = turnMat;
+                    indicatedPlayer = turn;
+
+                    MainDeck.instance.source.PlayOneShot(playSound[3]);
                     return;
                 }
+
+                MainDeck.instance.source.PlayOneShot(playSound[2]);
             }
             else
             {
@@ -96,19 +113,24 @@ public class AIGameManager : MonoBehaviour
             if (--drawAmount == 0)
             {
                 mustDraw = -1;
-                turnIndicator.transform.position = new Vector3(0, .85f, 0) + playerModels[turn].transform.position;
+                turnIndicator.transform.position = above[turn];
                 turnIndicator.GetComponent<MeshRenderer>().material = targetMat;
+                indicatedPlayer = turn;
             }
             return;
         }
 
 
 
+        acceptingCards = false;
         if (cardDrawn == 4)
         {
             if (drewElimination(turn))
             {
                 nextTurn();
+                acceptingCards = true;
+
+                MainDeck.instance.source.PlayOneShot(playSound[3]);
                 return;
             }
         }
@@ -124,14 +146,12 @@ public class AIGameManager : MonoBehaviour
         }
 
 
-        //Debug.Log("Mark Time");
         playCard = Time.time;
-        progress = true;
+        progress = 1;
     }
 
     public void play()
     {
-        //Debug.Log("Play");
         int i = 0;
         while (hands[turn, i] != 0)
         {
@@ -145,19 +165,23 @@ public class AIGameManager : MonoBehaviour
             {
                 if (hands[turn, r] == 1)
                 {
-                    //Debug.Log("Played 1 on");
                     mustDraw = randPlayer(turn);
                     Debug.Log(mustDraw);
                     drawAmount = 2;
-                    turnIndicator.GetComponent<MeshRenderer>().material = mustDrawMat;
-                    turnIndicator.transform.position = new Vector3(0, .85f, 0) + playerModels[mustDraw].transform.position;
+
+                    turnIndicator.GetComponent<MeshRenderer>().material = draw2Mat;
+                    turnIndicator.transform.position = above[mustDraw];
+                    indicatedPlayer = mustDraw;
+
+                    MainDeck.instance.source.PlayOneShot(playSound[0]);
+
+                    playCard -= 5;
+
                     break;
                 }
                 else if (hands[turn, r] == 2)
                 {
-                    //Debug.Log("Played 2 on");
                     int targeted = randPlayer(turn);
-                    //Debug.Log(targeted);
                     int k = 0;
                     while (k != 0)
                     {
@@ -165,14 +189,20 @@ public class AIGameManager : MonoBehaviour
                     }
                     k = Random.Range(0, k);
                     hands[turn, r] = hands[targeted, k];
-                    //Debug.Log(hands[turn, r]);
                     shift(targeted, k);
+
+                    turnIndicator.GetComponent<MeshRenderer>().material = stealMat;
+                    turnIndicator.transform.position = above[targeted];
+                    indicatedPlayer = targeted;
+
+                    MainDeck.instance.source.PlayOneShot(playSound[1]);
+
                     break;
                 }
             }
         }
 
-        nextTurn();
+
     }
 
     public void nextTurn()
@@ -190,7 +220,9 @@ public class AIGameManager : MonoBehaviour
 
         if (mustDraw == -1)
         {
-            turnIndicator.transform.position = new Vector3(0, .85f, 0) + playerModels[turn].transform.position;
+            turnIndicator.GetComponent<MeshRenderer>().material = turnMat;
+            turnIndicator.transform.position = above[turn];
+            indicatedPlayer = turn;
         }
     }
 

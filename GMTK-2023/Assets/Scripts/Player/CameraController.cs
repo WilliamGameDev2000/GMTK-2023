@@ -37,20 +37,10 @@ public class CameraController : MonoBehaviour
     {
         time = Time.time;
         int i = 0;
-        if (AIGameManager.instance.mustDraw == -1) {
-            while (AIGameManager.instance.hands[AIGameManager.instance.turn, i] != 0)
-            {
-                pixels[i].GetComponent<MeshRenderer>().material = cardMats[AIGameManager.instance.hands[AIGameManager.instance.turn, i]];
-                ++i;
-            }
-        }
-        else
+        while (AIGameManager.instance.hands[AIGameManager.instance.indicatedPlayer, i] != 0)
         {
-            while (AIGameManager.instance.hands[AIGameManager.instance.mustDraw, i] != 0)
-            {
-                pixels[i].GetComponent<MeshRenderer>().material = cardMats[AIGameManager.instance.hands[AIGameManager.instance.mustDraw, i]];
-                ++i;
-            }
+            pixels[i].GetComponent<MeshRenderer>().material = cardMats[AIGameManager.instance.hands[AIGameManager.instance.indicatedPlayer, i]];
+            ++i;
         }
     }
 
