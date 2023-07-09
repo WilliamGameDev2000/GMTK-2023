@@ -32,8 +32,8 @@ public class speaker : MonoBehaviour
         }
         else
         {
-            audiomanager.instance.AdjustVolume("MenuTheme", .18f);
-            audiomanager.instance.Play("MenuTheme");
+            audiomanager.instance.AdjustVolume("MAINTHEME", .18f);
+            audiomanager.instance.Play("MAINTHEME");
             StartCoroutine("RandomSounds", 2);
         }
 
