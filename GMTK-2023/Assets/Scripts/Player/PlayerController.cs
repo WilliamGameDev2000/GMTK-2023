@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     public float lookX, lookY;
     public int heldCard = 0;
 
-    [SerializeField] Text card_text;
     [SerializeField] Image card_image;
 
 
@@ -45,20 +44,12 @@ public class PlayerController : MonoBehaviour
 
         heldCard = card.CardType;
         card_image.sprite = card.cardSprite;
-
-        card_image.fillAmount = 1;
-
-        card_text.text = heldCard.ToString();
         
     }
 
     public void putDownCard()
     {
         heldCard = 0;
-        card_text.text = "0";
-
-        card_image.fillAmount = 0;
-
         card_image.sprite = null;
     }
 }
