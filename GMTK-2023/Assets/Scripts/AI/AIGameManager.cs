@@ -193,7 +193,8 @@ public class AIGameManager : MonoBehaviour
     {
         while (hands[t, i] != 0)
         {
-            hands[t, i++] = hands[t, i + 1];
+            hands[t, i] = hands[t, i + 1];
+            ++i;
         }
     }
 
