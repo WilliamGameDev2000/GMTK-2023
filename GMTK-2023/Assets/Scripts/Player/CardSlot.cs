@@ -11,6 +11,7 @@ public class CardSlot : MonoBehaviour
     void OnMouseEnter()
     {
         transform.localScale = new Vector3(0.15f, 0.015f, 0.15f);
+        MainDeck.instance.source.PlayOneShot(slideSound);
     }
 
     void OnMouseExit()
@@ -25,7 +26,6 @@ public class CardSlot : MonoBehaviour
 
     void OnMouseDown()
     {
-        MainDeck.instance.source.PlayOneShot(slideSound);
         MainDeck.instance.deactivateCardSlots();
         transform.localScale = new Vector3(0.15f, 0.01f, 0.1f);
 
