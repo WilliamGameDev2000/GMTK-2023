@@ -825,7 +825,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e2db094208b4ffa46bec1e3a4944b432, type: 2}
+  - {fileID: 2100000, guid: 9ea3b5c23fd81294d9786bd19ded105a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -864,7 +864,7 @@ Transform:
   m_GameObject: {fileID: 179472924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.505, y: 5.136, z: -6.383}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 1779344440}
   m_RootOrder: 0
@@ -5228,6 +5228,23 @@ MonoBehaviour:
   mustDrawMat: {fileID: 2100000, guid: 39603f9e72aec534b92f074e84a7d1f8, type: 2}
   playCard: 0
   progress: 0
+  draw2Mat: {fileID: 2100000, guid: 7632d7836d92d4a498165e050d14b7e8, type: 2}
+  stealMat: {fileID: 2100000, guid: 9348b7d83f973534bbbc958a9fbac08e, type: 2}
+  defenseMat: {fileID: 2100000, guid: e2db094208b4ffa46bec1e3a4944b432, type: 2}
+  turnMat: {fileID: 2100000, guid: 9ea3b5c23fd81294d9786bd19ded105a, type: 2}
+  indicatedPlayer: 0
+  acceptingCards: 1
+  above:
+  - {x: -0.6, y: 1, z: 1}
+  - {x: -0.3, y: 1, z: 1.5}
+  - {x: 0.3, y: 1, z: 1.6}
+  - {x: 0.9, y: 1, z: 1.4}
+  - {x: 1.05, y: 1, z: 0.9}
+  playSound:
+  - {fileID: 8300000, guid: cd454179ea003074aad2bc8f23c4ac97, type: 3}
+  - {fileID: 8300000, guid: 621d1d62fc68aaa4a90827b3060c474e, type: 3}
+  - {fileID: 8300000, guid: 3a74f049cdc73164e95e330018591b7c, type: 3}
+  - {fileID: 8300000, guid: 2b12c758f05f36a438eb3a3ca56306a7, type: 3}
 --- !u!4 &1779344440
 Transform:
   m_ObjectHideFlags: 0

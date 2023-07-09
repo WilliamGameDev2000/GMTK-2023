@@ -14,9 +14,9 @@ public class MainDeck : MonoBehaviour
 
     void OnMouseDown()
     {
-        source.PlayOneShot(dealSound[Random.Range(0, dealSound.Length)]);
-        if (AIGameManager.instance.playersLeft > 1)
+        if (AIGameManager.instance.playersLeft > 1 && AIGameManager.instance.acceptingCards)
         {
+            source.PlayOneShot(dealSound[Random.Range(0, dealSound.Length)]);
             AIGameManager.instance.cardDealt(drawCard());
         }
     }
