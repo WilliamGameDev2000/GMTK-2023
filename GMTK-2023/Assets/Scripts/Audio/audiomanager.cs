@@ -45,4 +45,11 @@ public class audiomanager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Stop();
     }
+
+    public void AdjustVolume(string name, float volume)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source.volume = volume;
+    }
+
 }
