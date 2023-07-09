@@ -472,7 +472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 2
-  angle: 32
+  angle: 62
   targetMask:
     serializedVersion: 2
     m_Bits: 192
@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 8536366374553547742}
   - component: {fileID: 5374121051474418948}
   m_Layer: 0
-  m_Name: Doggo_Gloves_01
+  m_Name: DoggoPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -587,7 +587,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6983000410421419720}
   m_LocalRotation: {x: -0.29287532, y: 0.9508684, z: 0.007477953, w: -0.100086555}
-  m_LocalPosition: {x: -5.697, y: 6.2811866, z: -6.108}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6.8292475, y: 3.219406, z: 6.8292465}
   m_Children:
   - {fileID: 4763258016009351716}
