@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [Range(150, 350)]
     public float sensitivity;
     public float lookX, lookY;
     public int heldCard = 0;
