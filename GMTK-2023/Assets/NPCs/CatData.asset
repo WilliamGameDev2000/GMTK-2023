@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1110af5ac32374ebad6ec8ce6de231, type: 3}
+  m_Name: CatData
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  sus_level: 0.267
+  trust_level: 0.01
+  sus_gain_rate: 0.0006
+  trust_gain_rate: 0.000045
+  sus_lose_rate: 0.000012
+  trust_lose_rate: 0.0002
