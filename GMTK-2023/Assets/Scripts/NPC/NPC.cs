@@ -11,18 +11,28 @@ public class NPC : MonoBehaviour
 
     float Current_suspicion;
     float Current_trust;
+
+    GameObject badAction;
+
     // Start is called before the first frame update
     protected void Start()
     {
+        //target = AIGameManager.instance.targetPlayer;
         Current_suspicion = data.sus_level;
         Current_trust = data.trust_level;
+
+        badAction = GameObject.FindGameObjectWithTag("BADACTION");
     }
 
     // Update is called once per frame
     protected void Update()
     {
-        if(ViewCone.GetComponent<FieldOfView>().visibleTargets.Count != 0)
+        if(ViewCone.GetComponent<FieldOfView>().visibleTargets.Count != 0 && gameObject != AIGameManager.instance.playerModels[AIGameManager.instance.targetPlayer])
         {
+/*            if (badAction.activeInHierarchy)
+            {
+                AddSuspicion(.012f);
+            }*/
             AddSuspicion(data.sus_gain_rate);
         }
 

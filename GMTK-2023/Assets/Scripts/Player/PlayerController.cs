@@ -50,6 +50,8 @@ public class PlayerController : MonoBehaviour
     public void putDownCard()
     {
         heldCard = 0;
+/*        GameObject.FindGameObjectWithTag("BADACTION").SetActive(true);
+        GameObject.FindGameObjectWithTag("BADACTION").SetActive(false);*/
         card_image.sprite = null;
     }
 }
