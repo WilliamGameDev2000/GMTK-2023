@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public int heldCard = 0;
 
     [SerializeField] Text card_text;
+    [SerializeField] Image card_image;
+
 
     public static PlayerController instance;
 
@@ -29,6 +31,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivity;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivity;
         lookY = Mathf.Clamp(lookY + mouseX, -90f, 90f);
@@ -37,15 +40,25 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(lookX, lookY, 0);
     }
 
-    public void pickupCard(int card)
-    {
-        heldCard = card;
+    public void pickupCard(StashDeck card)
+    {      
+
+        heldCard = card.CardType;
+        card_image.sprite = card.cardSprite;
+
+        card_image.fillAmount = 1;
+
         card_text.text = heldCard.ToString();
+        
     }
 
     public void putDownCard()
     {
         heldCard = 0;
         card_text.text = "0";
+
+        card_image.fillAmount = 0;
+
+        card_image.sprite = null;
     }
 }

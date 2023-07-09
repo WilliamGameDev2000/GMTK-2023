@@ -168,6 +168,8 @@ public class AIGameManager : MonoBehaviour
 
     public void nextTurn()
     {
+        CardAnimator.instance.MoveCard(turn);
+
         do
         {
             ++turn;
@@ -206,6 +208,7 @@ public class AIGameManager : MonoBehaviour
         --playersLeft;
         if (p == targetPlayer)
         {
+
             // lose game
         }
         else if(playersLeft == 1)

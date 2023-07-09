@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class StashDeck : MonoBehaviour
 {
-    public int card;
+    public int CardType;
     public GameObject player;
     public AudioSource source;
     public AudioClip[] pickupSound = new AudioClip[3];
 
+    public Sprite cardSprite;
+
     void OnMouseDown()
     {
         source.PlayOneShot(pickupSound[Random.Range(0, pickupSound.Length)]);
-        PlayerController.instance.pickupCard(card);
+        PlayerController.instance.pickupCard(this);
     }
 
     void OnMouseEnter()
