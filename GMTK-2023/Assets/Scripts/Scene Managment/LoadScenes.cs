@@ -7,7 +7,7 @@ public class LoadScenes : MonoBehaviour
 {
     public void OnLoadGameScene()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("PlaceHolder");
         audiomanager.instance.Stop("MenuTheme");
     }
 
