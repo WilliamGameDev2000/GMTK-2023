@@ -136,7 +136,7 @@ public class AIGameManager : MonoBehaviour
                 nextTurn();
                 acceptingCards = true;
 
-                MainDeck.instance.source.PlayOneShot(playSound[3]);
+                MainDeck.instance.source.PlayOneShot(playSound[2]);
                 return;
             }
         }

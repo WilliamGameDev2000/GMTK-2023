@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
         {
             if(player.GetComponent<NPC>().GetView().visibleTargets.Count != 0 && player != AIGameManager.instance.GetFriend())
             {
-                player.GetComponent<NPC>().AddSuspicion(0.25f);
+                player.GetComponent<NPC>().AddSuspicion(0.45f);
             }
         }
 

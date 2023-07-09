@@ -37,6 +37,7 @@ public class CameraController : MonoBehaviour
     {
         time = Time.time;
         int i = 0;
+        transform.GetChild(transform.childCount - 1).gameObject.SetActive(true);
         while (AIGameManager.instance.hands[AIGameManager.instance.indicatedPlayer, i] != 0)
         {
             pixels[i].GetComponent<MeshRenderer>().material = cardMats[AIGameManager.instance.hands[AIGameManager.instance.indicatedPlayer, i]];
@@ -46,6 +47,8 @@ public class CameraController : MonoBehaviour
 
     public void screenOff()
     {
+
+        transform.GetChild(transform.childCount - 1).gameObject.SetActive(false);
         for (int i = 0; i < 20; i++)
         {
             pixels[i].GetComponent<MeshRenderer>().material = cardMats[0];

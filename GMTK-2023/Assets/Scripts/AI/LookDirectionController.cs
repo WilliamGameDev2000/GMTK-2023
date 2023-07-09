@@ -16,7 +16,7 @@ public class LookDirectionController : MonoBehaviour
     {
         initial_forwardY = transform.eulerAngles.y;
 
-        StartCoroutine("SwapLook", .75f);
+        StartCoroutine("SwapLook", 1.12f);
     }
 
     IEnumerator SwapLook(float period)
@@ -30,7 +30,7 @@ public class LookDirectionController : MonoBehaviour
                 LookAway();
                 
             }
-            else if((Random.value <= npc.GetSuspicion() && !is_looking) || (Random.value >= 0.5f && !is_looking && npc.GetSuspicion() ==0))
+            else if((Random.value <= npc.GetSuspicion() - .1f && !is_looking) || (Random.value >= 0.5f && !is_looking && npc.GetSuspicion() ==0))
             {
                 LookBack();
                 
