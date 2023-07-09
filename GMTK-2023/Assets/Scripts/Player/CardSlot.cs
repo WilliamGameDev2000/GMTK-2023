@@ -5,10 +5,12 @@ using UnityEngine;
 public class CardSlot : MonoBehaviour
 {
     public int num;
+    public AudioSource source;
+    public AudioClip slideSound;
 
     void OnMouseEnter()
     {
-        transform.localScale = new Vector3(0.15f, 0.013f, 0.15f);
+        transform.localScale = new Vector3(0.15f, 0.015f, 0.15f);
     }
 
     void OnMouseExit()
@@ -23,6 +25,10 @@ public class CardSlot : MonoBehaviour
 
     void OnMouseDown()
     {
+        MainDeck.instance.source.PlayOneShot(slideSound);
+        MainDeck.instance.deactivateCardSlots();
+        transform.localScale = new Vector3(0.15f, 0.01f, 0.1f);
+
         if (PlayerController.instance.heldCard != 0)
         {
             for (int i = MainDeck.instance.deckPos; i >= MainDeck.instance.deckPos - num && i >= 0; i--)

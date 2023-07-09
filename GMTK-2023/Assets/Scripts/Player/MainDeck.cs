@@ -9,9 +9,12 @@ public class MainDeck : MonoBehaviour
     public GameObject[] cardSlots = new GameObject[5];
     public float lastLookAt;
     public static MainDeck instance;
+    public AudioSource source;
+    public AudioClip[] dealSound = new AudioClip[4];
 
     void OnMouseDown()
     {
+        source.PlayOneShot(dealSound[Random.Range(0, dealSound.Length)]);
         if (AIGameManager.instance.playersLeft > 1)
         {
             AIGameManager.instance.cardDealt(drawCard());
@@ -20,10 +23,16 @@ public class MainDeck : MonoBehaviour
 
     void OnMouseEnter()
     {
+        transform.localScale = new Vector3(0.18f, 0.07f, 0.13f);
         for (int i = 0; i < cardSlots.Length; i++)
         {
             cardSlots[i].SetActive(true);
         }
+    }
+
+    void OnMouseExit()
+    {
+        transform.localScale = new Vector3(0.15f, 0.05f, 0.1f);
     }
 
     void OnMouseOver()
@@ -64,12 +73,9 @@ public class MainDeck : MonoBehaviour
 
     void Update()
     {
-        if (cardSlots[0].activeInHierarchy && lastLookAt + 1 < Time.time)
+        if (cardSlots[0].activeInHierarchy && lastLookAt + 0.75 < Time.time)
         {
-            for (int i = 0; i < cardSlots.Length; i++)
-            {
-                cardSlots[i].SetActive(false);
-            }
+            deactivateCardSlots();
         }
     }
 
@@ -87,6 +93,14 @@ public class MainDeck : MonoBehaviour
             // you cannot reach the bottom of the deck without everyone else being eliminated meaning for the bottom
             // of the deck to have been reached the game has been tampered with
             return 0;
+        }
+    }
+
+    public void deactivateCardSlots()
+    {
+        for (int i = 0; i < cardSlots.Length; i++)
+        {
+            cardSlots[i].SetActive(false);
         }
     }
 }

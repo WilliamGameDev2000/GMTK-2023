@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensitivity;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensitivity;
-        lookY += mouseX;
+        lookY = Mathf.Clamp(lookY + mouseX, -90f, 90f);
         lookX = Mathf.Clamp(lookX - mouseY, -90f, 90f);
 
         transform.rotation = Quaternion.Euler(lookX, lookY, 0);

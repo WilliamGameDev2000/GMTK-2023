@@ -6,9 +6,12 @@ public class StashDeck : MonoBehaviour
 {
     public int card;
     public GameObject player;
+    public AudioSource source;
+    public AudioClip[] pickupSound = new AudioClip[3];
 
     void OnMouseDown()
     {
+        source.PlayOneShot(pickupSound[Random.Range(0, pickupSound.Length)]);
         PlayerController.instance.pickupCard(card);
     }
 
