@@ -29,10 +29,6 @@ public class NPC : MonoBehaviour
     {
         if(ViewCone.GetComponent<FieldOfView>().visibleTargets.Count != 0 && gameObject != AIGameManager.instance.playerModels[AIGameManager.instance.targetPlayer])
         {
-/*            if (badAction.activeInHierarchy)
-            {
-                AddSuspicion(.012f);
-            }*/
             AddSuspicion(data.sus_gain_rate);
         }
 
@@ -57,5 +53,10 @@ public class NPC : MonoBehaviour
     public float GetTrust()
     {
         return Current_trust;
+    }
+
+    public FieldOfView GetView()
+    {
+        return ViewCone.GetComponent<FieldOfView>();
     }
 }

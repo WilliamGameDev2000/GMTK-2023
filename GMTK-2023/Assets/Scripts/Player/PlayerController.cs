@@ -50,8 +50,15 @@ public class PlayerController : MonoBehaviour
     public void putDownCard()
     {
         heldCard = 0;
-/*        GameObject.FindGameObjectWithTag("BADACTION").SetActive(true);
-        GameObject.FindGameObjectWithTag("BADACTION").SetActive(false);*/
+
+        foreach (GameObject player in AIGameManager.instance.playerModels)
+        {
+            if(player.GetComponent<NPC>().GetView().visibleTargets.Count != 0 && player != AIGameManager.instance.GetFriend())
+            {
+                player.GetComponent<NPC>().AddSuspicion(0.25f);
+            }
+        }
+
         card_image.sprite = null;
     }
 }

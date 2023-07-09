@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] GameObject[] UI;
-
     // Start is called before the first frame update
     void Start()
     {

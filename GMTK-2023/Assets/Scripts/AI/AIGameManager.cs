@@ -22,11 +22,17 @@ public class AIGameManager : MonoBehaviour
     public Vector3[] above = new Vector3[5];
     public AudioClip[] playSound = new AudioClip[4];
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         targetPlayer = Random.Range(0, 5);
         playerModels[targetPlayer].GetComponent<MeshRenderer>().material = targetMat;
+        playerModels[targetPlayer].GetComponent<LookDirectionController>().enabled = false;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
         turnIndicator.transform.position = above[turn];
         indicatedPlayer = turn;
 
@@ -285,5 +291,10 @@ public class AIGameManager : MonoBehaviour
             }
         }
         return 0;// will never be run since the odds of the last player being picked are 100% and will trigger the above return.
+    }
+
+    public GameObject GetFriend()
+    {
+        return playerModels[targetPlayer];
     }
 }

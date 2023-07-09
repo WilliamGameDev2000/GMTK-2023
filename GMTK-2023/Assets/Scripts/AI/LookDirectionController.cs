@@ -24,14 +24,15 @@ public class LookDirectionController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(period);
-            if(Random.value <= npc.GetSuspicion() && is_looking)
+
+            if(Random.value >= npc.GetSuspicion() && is_looking)
             {
                 LookAway();
                 
             }
-            else if(Random.value >= npc.GetSuspicion() && !is_looking)
+            else if((Random.value <= npc.GetSuspicion() && !is_looking) || (Random.value >= 0.5f && !is_looking && npc.GetSuspicion() ==0))
             {
-                    LookBack();
+                LookBack();
                 
             }
         }
