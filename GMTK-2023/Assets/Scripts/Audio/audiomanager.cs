@@ -40,10 +40,13 @@ public class audiomanager : MonoBehaviour
         s.source.loop = s.looping;
     }
 
-    public void Stop(string name)
+    public void Stop()
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.Stop();
+        foreach (Sound s in sounds)
+        {
+            if(s.source.isPlaying)
+                s.source.Stop();
+        }
     }
 
     public void AdjustVolume(string name, float volume)

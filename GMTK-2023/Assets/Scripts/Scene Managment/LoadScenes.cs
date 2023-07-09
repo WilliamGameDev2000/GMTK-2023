@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class LoadScenes : MonoBehaviour
 {
+
     public void OnLoadGameScene()
     {
         SceneManager.LoadScene("PlaceHolder");
-        audiomanager.instance.Stop("MenuTheme");
+        if(audiomanager.instance != null)
+            audiomanager.instance.Stop();
     }
 
     public void OnQuitPressed()

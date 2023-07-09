@@ -6,6 +6,8 @@ public class OnSceneLoad : MonoBehaviour
 {
     private void OnEnable()
     {
-        speaker.instance.SetMenu(false);
+        if(speaker.instance != null)
+            speaker.instance.SetMenu(false);
+        Time.timeScale = 1;
     }
 }

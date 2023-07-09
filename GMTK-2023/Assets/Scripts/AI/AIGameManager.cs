@@ -50,6 +50,15 @@ public class AIGameManager : MonoBehaviour
             progress = false;
             play();
         }
+
+        for (int i = 0; i < playerModels.Length - 1; i++)
+        {
+            if (playerModels[i].GetComponent<Shiba>().GetSuspicion() >= 1)
+            {
+                Time.timeScale = 0;
+                GameManager.instance.SetEndState(GameManager.EndState.LOSE);
+            }
+        }
     }
 
     public void cardDealt(int cardDrawn)
@@ -208,11 +217,14 @@ public class AIGameManager : MonoBehaviour
         --playersLeft;
         if (p == targetPlayer)
         {
-
+            Time.timeScale = 0;
+            GameManager.instance.SetEndState(GameManager.EndState.LOSE);
             // lose game
         }
         else if(playersLeft == 1)
         {
+            Time.timeScale = 0;
+            GameManager.instance.SetEndState(GameManager.EndState.WIN);
             // win the game
         }
         return true;
